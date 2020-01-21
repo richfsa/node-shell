@@ -1,13 +1,11 @@
 const request = require(`request`);
 
-function curl(url) {
+module.exports = (url, done) => {
   request(url, function(error, response, body) {
     if (error) {
       throw error;
     } else {
-      process.stdout.write(body);
+      done(body);
     }
   });
-}
-
-module.exports = curl;
+};
